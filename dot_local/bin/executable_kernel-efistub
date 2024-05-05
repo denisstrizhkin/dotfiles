@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo efibootmgr --disk /dev/nvme0n1 --part 1 \
+    --create --label "Gentoo Dist ${1}" \
+    --loader /vmlinuz-${1}-gentoo-dist \
+    --unicode "root=LABEL=rootfs rootfstype=btrfs rootflags=subvol=gentoo-root rw initrd=\initramfs-${1}-gentoo-dist.img" \
+    --verbose

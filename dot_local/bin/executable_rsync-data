@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DATA_0=/mnt/data-0
+DATA_1=/mnt/data-1
+
+doas rsync -aP --delete "${DATA_0}/" "${DATA_1}" \
+  --exclude backups

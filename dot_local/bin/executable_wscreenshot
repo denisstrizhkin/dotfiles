@@ -1,0 +1,6 @@
+#!/bin/sh
+
+out="${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+grim -g "$(slurp)" "${out}"
+echo "${out}"
+wl-copy -t image/png < "${out}"

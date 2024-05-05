@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . -name "*.cue" -execdir sh -c 'shnsplit -f "$1" -o flac -t "%n_%p-%t" "${1%.cue}.tta"' _ {} \;

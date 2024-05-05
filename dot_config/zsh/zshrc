@@ -1,0 +1,45 @@
+# prompt
+PS1='%B%F{blue}- %F{green}%n@%M %F{yellow}[%D %T] %F{blue}%d
+%F{blue}- %#%b%f '
+
+# ls colors
+alias ls="ls --color"
+
+# PATH
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/share/flatpak/exports/bin"
+
+# EDITOR
+export EDITOR="emacsclient"
+
+# Kvantum
+export QT_STYLE_OVERRIDE="kvantum"
+
+# DOOM Emacs
+export PATH="$PATH:$HOME/.config/emacs/bin"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# Aliases
+alias dwl_config="doas $EDITOR /etc/portage/savedconfig/gui-wm/dwl-0.5 \
+    && doas emerge -1 dwl"
+
+# Start graphic session
+if [ $(tty) = "/dev/tty1" ]; then
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+
+    if test -z "$XDG_RUNTIME_DIR"; then
+        export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
+    fi
+    
+    dbus-run-session dwl
+fi

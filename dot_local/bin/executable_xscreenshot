@@ -1,0 +1,4 @@
+#!/bin/bash
+
+file="${HOME}/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png"
+scrot -q 100 -s -f "${file}" -e 'xclip -selection clipboard -target image/png $f' 

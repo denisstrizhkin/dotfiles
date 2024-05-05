@@ -1,0 +1,9 @@
+[user]
+	name = Denis Strizhkin
+	email = strdenis02@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
+[pull]
+	rebase = false
