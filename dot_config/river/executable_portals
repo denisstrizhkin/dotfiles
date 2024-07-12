@@ -1,0 +1,27 @@
+#!/bin/sh
+
+#sleep 0.5
+#killall xdg-desktop-portal-gtk
+#killall xdg-desktop-portal-wlr
+#killall xdg-desktop-portal
+#killall flatpak-portal
+#logger 'killed all xdg-desktop'
+#
+#sleep 0.5
+/usr/libexec/xdg-desktop-portal-gtk -r &
+logger 'xdg-desktop-portal-gtk started'
+sleep 0.5
+/usr/libexec/xdg-desktop-portal-wlr -r &
+logger 'xdg-desktop-portal-wlr started'
+sleep 0.5
+/usr/libexec/xdg-desktop-portal -r &
+logger 'xdg-desktop-portal started'
+sleep 0.5
+/usr/libexec/flatpak-portal -r --no-idle-exit &
+logger 'flatpak-portal started'
+
+# /usr/libexec/xdg-desktop-portal-wlr -r &
+# /usr/libexec/xdg-desktop-portal-gtk -r &
+# /usr/libexec/flatpak-portal -r --no-idle-exit &
+# /usr/libexec/xdg-desktop-portal -r &
+

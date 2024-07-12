@@ -1,0 +1,10 @@
+#!/bin/sh
+
+gentoo-pipewire-launcher restart &
+kanshi &
+fcitx5 -d &
+emacs --daemon &
+
+# wallpaper
+swaybg -o "Dell Inc. DELL S2721HN FMDZR83" -m fill -i ~/Pictures/260248-furude-rika-1700x1200.jpg \
+       -o "Acer Technologies V226HQL LY7EE006851B" -m fill -i ~/Pictures/260248-furude-rika-1700x1200.jpg &

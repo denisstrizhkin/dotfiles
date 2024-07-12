@@ -1,6 +1,17 @@
 #!/bin/sh
 
 out="${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+
+#case "$1" in
+#    "r")
+#	geom="$(slurp)"
+#	;;
+#    "o")
+#	geom="$(slurp -o)"
+#	;;
+#    *)
+#	echo "usage: ${} [-ro]
+
 grim -g "$(slurp)" "${out}"
 echo "${out}"
 wl-copy -t image/png < "${out}"
