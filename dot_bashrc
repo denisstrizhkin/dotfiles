@@ -14,20 +14,13 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-
-# Put your fun stuff here.
-# export QT_STYLE_OVERRIDE=adwaita-dark
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
-
 # PATH
-export PATH="$PATH:$HOME"/.local/bin
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/share/flatpak/exports/bin"
 
-# LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME"/.local/lib64
-
-# LAMMPS
-export LAMMPS_POTENTIALS="$HOME"/.local/share/lammps/potentials
+# Kvantum
+export QT_STYLE_OVERRIDE=kvantum
 
 # Java
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -35,19 +28,19 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Config home
 export XDG_CONFIG_HOME="$HOME/.config"
 
-
-# Aliases
-alias ls="ls --color"
-alias notebook='docker run --rm -p 8888:8888 -v "$(pwd)":/home/jovyan/work jupyter/scipy-notebook'
-alias lynx="lynx -vikeys"
-
-set -o vi
-
 # Run sway
 if [ $(tty) = "/dev/tty1" ]; then
-    Hyprland
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+
+    if test -z "$XDG_RUNTIME_DIR"; then
+        export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
+    fi
+    
+    hx --grammar fetch && hx --grammar build
+    dbus-run-session river
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Use fish shell
+[ -x /bin/fish ] && SHELL=/bin/fish exec fish

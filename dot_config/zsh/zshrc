@@ -31,5 +31,8 @@ if [ $(tty) = "/dev/tty1" ]; then
         export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
     fi
     
+    hx --grammar fetch && hx --grammar build
     dbus-run-session river
 fi
+
+[ -x /bin/fish ] && SHELL=/bin/fish exec fish

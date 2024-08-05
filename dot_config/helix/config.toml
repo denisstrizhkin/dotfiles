@@ -1,4 +1,4 @@
-theme = "tokyonight_storm"
+theme = "catppuccin_latte"
 
 [editor]
 line-number = "relative"
@@ -8,6 +8,3 @@ mouse = false
 insert = "bar"
 normal = "block"
 select = "underline"
-
-[keys.insert]
-"C-[" = "normal_mode"
