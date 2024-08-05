@@ -17,7 +17,7 @@ riverctl map normal Super R spawn foot
 riverctl map normal Super P spawn wmenu-run
 
 # screenshot
-riverctl map normal Super XKB_KEY_Print spawn wscreenshot
+riverctl map normal None Print spawn wscreenshot
 
 # close window
 riverctl map normal Super F close

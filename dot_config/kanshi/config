@@ -1,0 +1,18 @@
+# wlr-randr --output "${mon1}" --mode 1920x1080@74.973 --pos 0,0 --preferred \
+#    --output "${mon2}" --on --mode 1920x1080@60.00 --pos 1920,0 --transform 90 \
+# mon1="HDMI-A-1"
+# mon2="DP-3"
+
+profile desktop {
+	output "Dell Inc. DELL S2721HN FMDZR83" {
+		enable
+		mode 1920x1080@74.973
+		position 0,0
+	}
+	output "Acer Technologies V226HQL LY7EE006851B" {
+		enable
+		mode 1920x1080@60.00
+		position 1920,0
+		transform 90
+	}
+}
