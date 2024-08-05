@@ -27,16 +27,18 @@ if status is-interactive
 end
 
 if status is-login
-    # fcitx input method
-    set -gx GTK_IM_MODULE fcitx
-    set -gx QT_IM_MODULE fcitx
-    set -gx XMODIFIERS @im=fcitx
+    if test /dev/tty1 = (tty)
+        # fcitx input method
+        set -gx GTK_IM_MODULE fcitx
+        set -gx QT_IM_MODULE fcitx
+        set -gx XMODIFIERS @im=fcitx
 
-    # setup runtime dir on openrc
-    if test -z $XDG_RUNTIME_DIR
-        set -gx XDG_RUNTIME_DIR=(mktemp -d /tmp/(id -u)-runtime-dir.XXX)
+        # setup runtime dir on openrc
+        if test -z $XDG_RUNTIME_DIR
+            set -gx XDG_RUNTIME_DIR (mktemp -d /tmp/(id -u)-runtime-dir.XXX)
+        end
+
+        hx --grammar fetch && hx --grammar build
+        dbus-run-session river
     end
-
-    hx --grammar fetch && hx --grammar build
-    dbus-run-session river
 end
