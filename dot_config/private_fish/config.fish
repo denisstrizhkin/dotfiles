@@ -6,6 +6,8 @@ if not type -q bass
 end
 bass source /etc/profile
 
+# Aliases
+alias img="mpv --keep-open"
 
 # Path
 set -gx PATH $PATH $HOME/.local/bin
@@ -38,7 +40,6 @@ if status is-login
             set -gx XDG_RUNTIME_DIR (mktemp -d /tmp/(id -u)-runtime-dir.XXX)
         end
 
-        hx --grammar fetch && hx --grammar build
         dbus-run-session river
     end
 end

@@ -2,6 +2,7 @@ theme = "catppuccin_latte"
 
 [editor]
 line-number = "relative"
+true-color = true
 mouse = false
 
 [editor.cursor-shape]
