@@ -1,9 +1,10 @@
 #!/bin/sh
 
-gentoo-pipewire-launcher restart &
-kanshi &
+# gentoo-pipewire-launcher restart &
+dinitctl setenv WAYLAND_DISPLAY && dinitctl start kanshi
+# kanshi &
 fcitx5 -d &
-foot --server &
+# foot --server &
 tmux has-session -t default || tmux new-session -c ~ -d -s default
 
 # wallpaper

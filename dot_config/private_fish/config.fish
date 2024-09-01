@@ -4,10 +4,13 @@ if not type -q bass
     git clone --depth 1 https://github.com/edc/bass.git $bass_path
     pushd $bass_path && make install && popd
 end
-bass source /etc/profile
+# bass source /etc/profile
 
 # Aliases
-alias img="mpv --keep-open"
+alias img="mpv --keep-open=always" # stops before playing next
+alias imga="mpv --keep-open" # autoplays next
+alias imgs="mpv --keep-open=always --vo=sixel --really-quiet"
+alias imgsa="mpv --keep-open --vo=sixel --really-quiet "
 
 # Path
 set -gx PATH $PATH $HOME/.local/bin
@@ -23,6 +26,9 @@ set -gx _JAVA_AWT_WM_NONREPARENTING 1
 # Config home
 set -gx XDG_CONFIG_HOME $HOME/.config
 
+# EDITOR
+set -gx EDITOR hx
+
 if status is-interactive
     # GPG tui
     set -gx GPG_TTY (tty)
@@ -35,11 +41,6 @@ if status is-login
         set -gx QT_IM_MODULE fcitx
         set -gx XMODIFIERS @im=fcitx
 
-        # setup runtime dir on openrc
-        if test -z $XDG_RUNTIME_DIR
-            set -gx XDG_RUNTIME_DIR (mktemp -d /tmp/(id -u)-runtime-dir.XXX)
-        end
-
-        dbus-run-session river
+        river
     end
 end
