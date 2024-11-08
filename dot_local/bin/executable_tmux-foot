@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+tmux attach -t default
+or tmux new-session -s default
