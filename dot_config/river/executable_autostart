@@ -1,10 +1,13 @@
 #!/bin/fish
 
-dinitctl setenv WAYLAND_DISPLAY && dinitctl start kanshi
-fcitx5 -d &
+dinitctl setenv WAYLAND_DISPLAY
 tmux has-session -t default || tmux new-session -c ~ -d -s default
 
 # wallpaper
-set -l paper ~/Pictures/wallpapers/bceb37527e12f44f7b48d3dceaaa599a.png
+set -l paper_dir ~/Pictures/wallpapers
+
+# set -l paper $paper_dir/bceb37527e12f44f7b48d3dceaaa599a.png
+set -l paper $paper_dir/rika_realistic_bg_16_9.png
+
 swaybg -o "Dell Inc. DELL S2721HN FMDZR83" -m fill -i $paper \
-       -o "Acer Technologies V226HQL LY7EE006851B" -m fill -i $paper &
+    -o "Acer Technologies V226HQL LY7EE006851B" -m fill -i $paper &
