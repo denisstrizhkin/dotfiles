@@ -1,0 +1,41 @@
+# Aliases for viewing images in mpv
+alias img="mpv --keep-open=always" # stops before playing next
+alias imga="mpv --keep-open" # autoplays next
+alias imgs="mpv --keep-open=always --vo=sixel --really-quiet"
+alias imgsa="mpv --keep-open --vo=sixel --really-quiet "
+
+# Path
+fish_add_path $HOME/.local/bin $HOME/.npm/bin $HOME/.cargo/bin $HOME/go/bin
+
+# EDITOR
+if type -q helix
+    set -gx EDITOR helix
+    alias hx=helix
+else if type -q hx
+    set -gx EDITOR hx
+end
+
+
+{{ if eq .chezmoi.os "linux" -}}
+# flatpak path
+fish_add_path $HOME/.local/share/flatpak/exports/bin
+# xdg config folder
+set -gx XDG_CONFIG_HOME $HOME/.config
+# fcitx5
+set -gx XMODIFIERS @im=fcitx
+set -gx GTK_IM_MODULE fcitx
+set -gx QT_IM_MODULE fcitx
+
+if status is-interactive
+    # GPG tui
+    set -gx GPG_TTY (tty)
+end
+
+if status is-login
+    if test /dev/tty1 = (tty)
+        # start your fancy wm here
+        # niri-session
+    end
+end
+{{ end }}
+
