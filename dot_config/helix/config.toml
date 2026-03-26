@@ -1,9 +1,10 @@
-theme = "catppuccin_latte"
+theme = "mine"
 
 [editor]
 line-number = "relative"
 true-color = true
 mouse = false
+lsp.enable = false
 
 [editor.cursor-shape]
 insert = "bar"
