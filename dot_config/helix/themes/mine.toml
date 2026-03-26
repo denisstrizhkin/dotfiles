@@ -1,0 +1,7 @@
+"ui.background" = { }
+"ui.selection" = { bg = "magenta" }
+"ui.cursor.select" = { }
+"comment" = { fg = "yellow", modifiers = [ "italic" ] }
+"string" = { fg = "green", modifiers = [ "italic" ] }
+"keyword" = { fg = "cyan", modifiers = [ "bold" ] }
+"type" = { fg = "cyan", modifiers = [ "bold" ] }
